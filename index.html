@@ -53,6 +53,21 @@ nav a:hover{
     color: var(--main-red);
 }
 
+#langBtn{
+    margin-left: 20px;
+    padding: 5px 12px;
+    background: var(--main-red);
+    border: none;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#langBtn:hover{
+    background: #ff4444;
+}
+
 /* HERO SECTION */
 .hero{
     height: 90vh;
@@ -143,44 +158,83 @@ footer{
     <div class="logo">GRIMZY</div>
     <div>
         <a href="#">Home</a>
-        <a href="#videos">Videos</a>
+        <a href="#videos">Team Members</a>
         <a href="https://aparat.com/grimzy" target="_blank">Aparat</a>
+        <button id="langBtn" onclick="toggleLang()">FA</button>
     </div>
 </nav>
 
 <section class="hero">
-    <h1>Welcome to Grimzy</h1>
-    <p>Minecraft Survival • PvP • Challenges</p>
-    <button onclick="goToChannel()">Watch on Aparat</button>
+    <h1 id="heroTitle">Welcome to Grimzy</h1>
+    <p id="heroDesc">Minecraft Survival • PvP • Challenges</p>
+    <button onclick="goToChannel()" id="watchBtn">Watch on Aparat</button>
 </section>
 
 <section class="section" id="videos">
-    <h2>Meet the Team:</h2>
+    <h2 id="videosTitle">Meet the Team:</h2>
     <div class="video-grid">
         <div class="card">
-            <h3>Amirfazel (The dev.)</h3>
-            <p>Web site design, Editor, thumbnail maker,...</p>
+            <h3 id="member1">Amirfazel (The dev.)</h3>
+            <p id="member1Desc">Web site design, Editor, thumbnail maker,...</p>
         </div>
 
         <div class="card">
-            <h3>Arshia</h3>
-            <p>The gamer</p>
+            <h3 id="member2">Arshia</h3>
+            <p id="member2Desc">The gamer</p>
         </div>
 
         <div class="card">
-            <h3>MMD</h3>
-            <p>The gamer, Replacment Editor</p>
+            <h3 id="member3">MMD</h3>
+            <p id="member3Desc">The gamer, Replacement Editor</p>
         </div>
     </div>
 </section>
 
-<footer>
+<footer id="footerText">
     © 2026 Grimzy | Minecraft Channel
 </footer>
 
 <script>
+let currentLang = "en";
+
 function goToChannel(){
     window.open("https://aparat.com/grimzy", "_blank");
+}
+
+function toggleLang(){
+    if(currentLang === "en"){
+        // Switch to Persian
+        document.getElementById("heroTitle").innerText = "به گریمزی خوش آمدید";
+        document.getElementById("heroDesc").innerText = "ماینکرفت • بقا • پی وی پی • چالش ها";
+        document.getElementById("watchBtn").innerText = "تماشا در آپارات";
+        document.getElementById("videosTitle").innerText = "اعضای تیم:";
+        document.getElementById("member1").innerText = "امیرفاضل (برنامه نویس)";
+        document.getElementById("member1Desc").innerText = "طراحی سایت، ویرایشگر، سازنده تامنیل ...";
+        document.getElementById("member2").innerText = "عرشیا";
+        document.getElementById("member2Desc").innerText = "گیمیر";
+        document.getElementById("member3").innerText = "MMD";
+        document.getElementById("member3Desc").innerText = "گیمیر، جایگزین ویرایشگر";
+        document.getElementById("footerText").innerText = "© 2026 گریمزی | کانال ماینکرفت";
+        document.getElementById("langBtn").innerText = "EN";
+        document.body.style.direction = "rtl";
+        currentLang = "fa";
+    } else {
+        // Switch back to English
+        document.getElementById("heroTitle").innerText = "Welcome to Grimzy";
+        document.getElementById("heroDesc").innerText = "Minecraft Survival • PvP • Challenges";
+        document.getElementById("watchBtn").innerText = "Watch on Aparat";
+        document.getElementById("videosTitle").innerText = "Meet the Team:";
+        document.getElementById("member1").innerText = "Amirfazel (The dev.)";
+        document.getElementById("member1Desc").innerText = "Web site design, Editor, thumbnail maker,...";
+        document.getElementById("member2").innerText = "Arshia";
+        document.getElementById("member2Desc").innerText = "The gamer";
+        document.getElementById("member3").innerText = "MMD";
+        document.getElementById("member3Desc").innerText = "The gamer, Replacement Editor";
+        document.getElementById("footerText").innerText = "© 2026 Grimzy | Minecraft Channel";
+        document.getElementById("langBtn").innerText = "FA";
+        document.body.style.direction = "ltr";
+        currentLang = "en";
+    }
 }
 </script>
 
